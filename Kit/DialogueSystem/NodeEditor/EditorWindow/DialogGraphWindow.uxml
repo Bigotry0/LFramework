@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/LFramework/Kit/DialogueSystem/NodeEditor/EditorWindow/DialogueTreeView.uss?fileID=7433441132597879392&amp;guid=0757d74c4a544b0d9177b10ffea85dcb&amp;type=3#DialogueTreeView" />
+    <ui:VisualElement style="width: 100px; height: 611px; align-items: stretch; min-width: 100%; min-height: 100%; flex-grow: 1;">
+        <uie:Toolbar style="align-items: stretch; justify-content: flex-end;">
+            <uie:ToolbarButton text="Save" display-tooltip-when-elided="true" name="SaveButton" />
+        </uie:Toolbar>
+        <LFramework.Kit.DialogueSystem.DialogGraphView focusable="true" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>
