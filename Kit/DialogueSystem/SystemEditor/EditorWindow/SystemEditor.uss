@@ -1,0 +1,3 @@
+GroupBox{
+    align-items: flex-start;
+}

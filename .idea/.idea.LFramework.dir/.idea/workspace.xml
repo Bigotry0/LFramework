@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc9243c9-8e1e-44dc-bbaf-cb842303ba53" name="变更" comment="LFramework v1.8.0">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README/Image/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="cc9243c9-8e1e-44dc-bbaf-cb842303ba53" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LFramework.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LFramework.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Architecture/Architecture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Architecture/Architecture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/DialogueSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/DialogGraphView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/DialogGraphView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/DialogGraphWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/DialogGraphWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/DialogTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/DialogTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/Node/DialogNodeDataBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/Node/DialogNodeDataBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/Node/NodeType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Kit/DialogueSystem/NodeEditor/Node/NodeType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/SelectDialogSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kit/DialogueSystem/TypingEffectsDialogue.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +21,6 @@
   <component name="ChangesViewManager" show_ignored="true" />
   <component name="GitRewordedCommitMessages">
     <option name="onto" value="6a498e884f6aeff0048337b0b25ba24580c939df" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Kit/DialogueSystem/DialogueSystem.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,7 +57,8 @@
       <updated>1677350558815</updated>
       <workItem from="1677350560611" duration="1496000" />
       <workItem from="1677382353906" duration="752000" />
-      <workItem from="1677383423152" duration="591000" />
+      <workItem from="1677383423152" duration="1215000" />
+      <workItem from="1677778687964" duration="317000" />
     </task>
     <task id="LOCAL-00001" summary="LFramework v1.8.0">
       <created>1677350861855</created>
@@ -71,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677351754991</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add README.md">
+      <created>1677384047644</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677384047644</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +103,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="LFramework v1.8.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="LFramework v1.8.0" />
+    <MESSAGE value="Add README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add README.md" />
   </component>
 </project>

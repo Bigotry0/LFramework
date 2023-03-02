@@ -21,7 +21,6 @@ namespace LFramework.Kit.DialogueSystem
 
         private DialogGraphView _graphView = null;
         private InspectorView _inspectorView = null;
-        private DialogTree _treeData = null;
 
         [OnOpenAsset(1)]
         public static bool OnOpenAsssets(int id, int line)
@@ -31,13 +30,12 @@ namespace LFramework.Kit.DialogueSystem
                 //打开不同文件
                 if (DialogGraphView.treeData != tree)
                 {
-                    Debug.Log(DialogGraphView.treeData);
                     DialogGraphView.treeData = tree;
 
                     //判断窗口是否打开
                     if (HasOpenInstances<DialogGraphWindow>())
                     {
-                        Debug.Log(true);
+                        //Debug.Log(true);
                         CloseEditorWindow();
                     }
 
@@ -48,7 +46,7 @@ namespace LFramework.Kit.DialogueSystem
                 DialogGraphWindow wnd = GetWindow<DialogGraphWindow>();
                 wnd.titleContent = new GUIContent("DialogueView");
                 
-                Debug.Log("Open");
+                //Debug.Log("Open");
                 return true;
             }
             return false;
@@ -81,17 +79,16 @@ namespace LFramework.Kit.DialogueSystem
         //保存资源文件
         private void OnSaveButtonClicked()
         {
-            AssetDatabase.SaveAssets();
+            //AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            Debug.Log("Save");
         }
 
-        private void OnDestroy()
-        {
-            //死之前记得保存一下，保险哈
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
-        }
+        // private void OnDestroy()
+        // {
+        //     //死之前记得保存一下，保险哈
+        //     OnSaveButtonClicked();
+        //     
+        // }
     }
 }
 #endif

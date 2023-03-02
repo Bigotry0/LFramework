@@ -27,8 +27,8 @@ namespace LFramework.Kit.DialogueSystem
 #endif
         }
 
-        public List<string> OutputItems = new List<string>();
+        [HideInInspector] public List<string> OutputItems = new List<string>();
 
-        public List<DialogNodeDataBase> ChildNode = new List<DialogNodeDataBase>();
+        [HideInInspector] public List<DialogNodeDataBase> ChildNode = new List<DialogNodeDataBase>();
     }
 }

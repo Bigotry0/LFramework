@@ -9,6 +9,7 @@ namespace LFramework.Kit.DialogueSystem
         DetermineDialogNode,
         EventNode,
         End,
-        CharacterSwitchNode
+        CharacterSwitchNode,
+        SwitchDialogTreeNode
     }
 }

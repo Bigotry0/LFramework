@@ -1,3 +1,6 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -5,9 +8,7 @@ using UnityEngine.Events;
 namespace LFramework.Kit.DialogueSystem
 {
     /// <summary>
-    /// 对话系统抽象类（无对话）
-    /// TODO：增加对话分支系统
-    /// TODO：增加可视化节点编辑器
+    /// 对话系统抽象类
     /// </summary>
     public abstract class DialogueSystem : MonoBehaviour
     {
@@ -47,11 +48,6 @@ namespace LFramework.Kit.DialogueSystem
             /// </summary>
             Finished
         }
-
-        // /// <summary>
-        // /// 用于编辑器中配置对话
-        // /// </summary>
-        // public List<string> Sentences = new List<string>();
 
         /// <summary>
         /// 对话数据
@@ -134,6 +130,87 @@ namespace LFramework.Kit.DialogueSystem
         private bool IsSelecting = false;
 
         /// <summary>
+        /// 通过路径设置
+        /// </summary>
+        /// <param name="path">DialogTree对象相对路径</param>
+        public void SetDialogTree(string path)
+        {
+            var dialogTree = AssetDatabase.LoadAssetAtPath<DialogTree>(path);
+            //var dialogTree = Resources.Load(path);
+            if (dialogTree == null)
+            {
+                Debug.LogError("Load DialogTree in path:" + path + " failed!");
+                return;
+            }
+
+            if (typeof(DialogTree) == DialogTree.GetType())
+            {
+                DialogTree = dialogTree;
+            }
+
+            if (DialogueState != DialogueStates.Started)
+            {
+                InitDialogTreeData();
+            }
+        }
+
+        /// <summary>
+        /// 通过对象设置
+        /// </summary>
+        /// <param name="dialogTree">DialogTree对象</param>
+        public void SetDialogTree(DialogTree dialogTree)
+        {
+            if (dialogTree == null)
+            {
+                Debug.LogError($"The DialogTree: {dialogTree} object is Null");
+                return;
+            }
+
+            DialogTree = dialogTree;
+            
+            if (DialogueState != DialogueStates.Started)
+            {
+                InitDialogTreeData();
+            }
+        }
+
+        /// <summary>
+        /// 通过存储库Key设置
+        /// </summary>
+        /// <param name="key">键</param>
+        public void SetDialogTreeByKey(string key)
+        {
+            var dialogTree = DialogTreeManager.Instance.GetDialogTree(key);
+            
+            if (dialogTree == null)
+            {
+                Debug.LogError($"The DialogTree: {dialogTree} object is Null");
+                return;
+            }
+
+            DialogTree = dialogTree;
+            
+            if (DialogueState != DialogueStates.Started)
+            {
+                InitDialogTreeData();
+            }
+        }
+
+        /// <summary>
+        /// 对外输出语句
+        /// </summary>
+        /// <param name="text">文本</param>
+        protected void OutputText(string text)
+        {
+            if (text == null)
+            {
+                return;
+            }
+            
+            OnPlayText?.Invoke(text);
+        }
+        
+        /// <summary>
         /// 初始化对话树数据
         /// </summary>
         private void InitDialogTreeData()
@@ -185,8 +262,8 @@ namespace LFramework.Kit.DialogueSystem
                     {
                         SentenceQueue.Enqueue(
                             CurrentDialogNode.OutputItems[Random.Range(0, CurrentDialogNode.OutputItems.Count)]);
-                        
                     }
+
                     CurrentDialogNode = CurrentDialogNode.ChildNode[0];
                     break;
                 }
@@ -211,6 +288,12 @@ namespace LFramework.Kit.DialogueSystem
                 {
                     OnCharacterSwitchEvent?.Invoke(CurrentDialogNode.OutputItems[0]);
                     CurrentDialogNode = CurrentDialogNode.ChildNode[0];
+                    break;
+                }
+                case NodeType.SwitchDialogTreeNode:
+                {
+                    SetDialogTreeByKey(CurrentDialogNode.OutputItems[0]);
+                    InitDialogTreeData();
                     break;
                 }
             }
@@ -273,7 +356,7 @@ namespace LFramework.Kit.DialogueSystem
             else
             {
                 LoadCurrentDialogNode();
-                //TODO:
+                
                 if (IsLoadDialogTreeDataEnd)
                 {
                     DialogueState = DialogueStates.Finished;
@@ -296,8 +379,10 @@ namespace LFramework.Kit.DialogueSystem
             DialogueState = DialogueStates.NotStart;
             IsSelecting = false;
             IsLoadDialogTreeDataEnd = false;
-            InitDialogTreeData();
+
             OnNotStart?.Invoke();
+
+            InitDialogTreeData();
         }
 
         /// <summary>

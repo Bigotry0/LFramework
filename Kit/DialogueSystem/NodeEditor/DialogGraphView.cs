@@ -212,7 +212,7 @@ namespace LFramework.Kit.DialogueSystem
             {
                 evt.menu.AppendAction("Create StartNode", x => { CreateNode(NodeType.Start, clickPosition); });
             }
-            
+
             evt.menu.AppendAction("Create RandomDialogNode",
                 x => { CreateNode(NodeType.RandomDialogNode, clickPosition); });
             evt.menu.AppendAction("Create SequentialDialogNode",
@@ -221,7 +221,10 @@ namespace LFramework.Kit.DialogueSystem
                 x => CreateNode(NodeType.SelectDialogNode, clickPosition));
             evt.menu.AppendAction("Create EventNode", x => { CreateNode(NodeType.EventNode, clickPosition); });
             evt.menu.AppendAction("Create EndNode", x => { CreateNode(NodeType.End, clickPosition); });
-            evt.menu.AppendAction("Create CharacterSwitchNode", x => { CreateNode(NodeType.CharacterSwitchNode, clickPosition); });   
+            evt.menu.AppendAction("Create CharacterSwitchNode",
+                x => { CreateNode(NodeType.CharacterSwitchNode, clickPosition); });
+            evt.menu.AppendAction("Create SwitchDialogTreeNode",
+                x => { CreateNode(NodeType.SwitchDialogTreeNode, clickPosition); });
         }
 
 
@@ -257,7 +260,8 @@ namespace LFramework.Kit.DialogueSystem
                 case NodeType.Start:
                 {
                     var dialogNodeData = ScriptableObject.CreateInstance<StartNodeData>();
-                    dialogNodeData.Path = $"Assets/DialogueData/NodeData/StartData[{dialogNodeData.GetInstanceID()}].asset";
+                    dialogNodeData.Path =
+                        $"Assets/DialogueData/NodeData/StartData[{dialogNodeData.GetInstanceID()}].asset";
                     EditorUtility.SetDirty(dialogNodeData);
 
                     AssetDatabase.CreateAsset(dialogNodeData,
@@ -269,7 +273,8 @@ namespace LFramework.Kit.DialogueSystem
                 case NodeType.RandomDialogNode:
                 {
                     var dialogNodeData = ScriptableObject.CreateInstance<RandomDialogNodeData>();
-                    dialogNodeData.Path = $"Assets/DialogueData/NodeData/RandomDialogData[{dialogNodeData.GetInstanceID()}].asset";
+                    dialogNodeData.Path =
+                        $"Assets/DialogueData/NodeData/RandomDialogData[{dialogNodeData.GetInstanceID()}].asset";
                     EditorUtility.SetDirty(dialogNodeData);
 
                     AssetDatabase.CreateAsset(dialogNodeData,
@@ -320,7 +325,8 @@ namespace LFramework.Kit.DialogueSystem
                 case NodeType.End:
                 {
                     var dialogNodeData = ScriptableObject.CreateInstance<EndNodeData>();
-                    dialogNodeData.Path = $"Assets/DialogueData/NodeData/EndData[{dialogNodeData.GetInstanceID()}].asset";
+                    dialogNodeData.Path =
+                        $"Assets/DialogueData/NodeData/EndData[{dialogNodeData.GetInstanceID()}].asset";
                     EditorUtility.SetDirty(dialogNodeData);
 
                     AssetDatabase.CreateAsset(dialogNodeData,
@@ -332,7 +338,8 @@ namespace LFramework.Kit.DialogueSystem
                 case NodeType.CharacterSwitchNode:
                 {
                     var dialogNodeData = ScriptableObject.CreateInstance<CharacterSwitchNodeData>();
-                    dialogNodeData.Path = $"Assets/DialogueData/NodeData/CharacterSwitchData[{dialogNodeData.GetInstanceID()}].asset";
+                    dialogNodeData.Path =
+                        $"Assets/DialogueData/NodeData/CharacterSwitchData[{dialogNodeData.GetInstanceID()}].asset";
                     EditorUtility.SetDirty(dialogNodeData);
 
                     AssetDatabase.CreateAsset(dialogNodeData,
@@ -341,9 +348,22 @@ namespace LFramework.Kit.DialogueSystem
                     nodeView = new CharacterSwitchNodeView(dialogNodeData);
                     break;
                 }
+                case NodeType.SwitchDialogTreeNode:
+                {
+                    var dialogNodeData = ScriptableObject.CreateInstance<SwitchDialogTreeNodeData>();
+                    dialogNodeData.Path =
+                        $"Assets/DialogueData/NodeData/SwitchDialogTreeData[{dialogNodeData.GetInstanceID()}].asset";
+                    EditorUtility.SetDirty(dialogNodeData);
+
+                    AssetDatabase.CreateAsset(dialogNodeData,
+                        $"Assets/DialogueData/NodeData/SwitchDialogTreeData[{dialogNodeData.GetInstanceID()}].asset");
+
+                    nodeView = new SwitchDialogTreeNodeView(dialogNodeData);
+                    break;
+                }
                 default:
                 {
-                    Debug.LogError("未找到该类型的节点");
+                    Debug.LogError("No node of this type was found");
                     break;
                 }
             }
@@ -457,6 +477,11 @@ namespace LFramework.Kit.DialogueSystem
                 case NodeType.CharacterSwitchNode:
                 {
                     nodeView = new CharacterSwitchNodeView(DialogNodeData);
+                    break;
+                }
+                case NodeType.SwitchDialogTreeNode:
+                {
+                    nodeView = new SwitchDialogTreeNodeView(DialogNodeData);
                     break;
                 }
                 default:

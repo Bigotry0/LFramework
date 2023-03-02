@@ -8,12 +8,12 @@ using UnityEditor;
 
 namespace LFramework.Kit.DialogueSystem
 {
-    [CreateAssetMenu(menuName = "Create new DialogTreeData",fileName = "DialogTreeData")]
+    [CreateAssetMenu(menuName = "Create new DialogTreeData", fileName = "DialogTreeData")]
     public class DialogTree : ScriptableObject
     {
-        public DialogNodeDataBase StartNodeData = null;
+        [HideInInspector] public DialogNodeDataBase StartNodeData = null;
 
-        public List<DialogNodeDataBase> ChildNodeDataList = new List<DialogNodeDataBase>();
+        [HideInInspector] public List<DialogNodeDataBase> ChildNodeDataList = new List<DialogNodeDataBase>();
 
         [Serializable]
         public class ViewData
@@ -22,7 +22,7 @@ namespace LFramework.Kit.DialogueSystem
             public Vector3 Scale = new Vector3(1, 1, 1);
         }
 
-        public ViewData GraphViewData = new ViewData();
+        [HideInInspector] public ViewData GraphViewData = new ViewData();
     }
 }
 

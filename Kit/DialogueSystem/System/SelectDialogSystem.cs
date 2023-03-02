@@ -56,7 +56,7 @@ namespace LFramework.Kit.DialogueSystem
             {
                 //性能更好
                 transform.GetChild(i).gameObject.SetActive(false);
-                //这种看着干净，爽
+                //这种层级里看着干净，爽
                 //Destroy(transform.GetChild(i).gameObject);
             }
         }

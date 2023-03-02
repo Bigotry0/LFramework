@@ -52,7 +52,8 @@ public class TypingEffectsDialogue : DialogueSystem
             yield return new WaitForSeconds(TypingSpeed);
 
             sentenceToPlay = CurrentSentence.Substring(0, i);
-            OnPlayText?.Invoke(sentenceToPlay);
+            OutputText(sentenceToPlay);
+            //OnPlayText?.Invoke(sentenceToPlay);
         }
 
         //打印完成后将对话状态设定为Finished
